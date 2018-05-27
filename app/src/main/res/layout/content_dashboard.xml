@@ -9,6 +9,7 @@
     tools:showIn="@layout/app_bar_dashboard">
 
     <android.support.v7.widget.RecyclerView
+        android:id="@+id/website_recylerview"
         android:layout_width="0dp"
         android:layout_height="70dp"
         android:scrollbars="horizontal"
