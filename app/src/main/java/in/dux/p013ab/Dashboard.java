@@ -13,11 +13,16 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.ImageView;
 
 import java.util.ArrayList;
 import java.util.List;
 
+import in.dux.p013ab.more_websites.Websites;
+import in.dux.p013ab.news_and_events.NewsAndEvent;
+import in.dux.p013ab.notices.Notices;
+import in.dux.p013ab.placement.Placements;
 import ir.apend.slider.model.Slide;
 import ir.apend.slider.ui.Slider;
 
@@ -25,7 +30,8 @@ public class Dashboard extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
     private ImageView abesit,moodle,aktu,oneview,more;
-    public static Slider slider;
+    private Slider slider;
+    private Button notice,newsandevent,placement;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,65 +55,12 @@ public class Dashboard extends AppCompatActivity
         aktu = findViewById(R.id.aktuImage);
         oneview = findViewById(R.id.oneviewImage);
         more = findViewById(R.id.moreImage);
+        notice = findViewById(R.id.notices);
+        newsandevent = findViewById(R.id.newsAndEvent);
+        placement = findViewById(R.id.placement);
 
-        abesit.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent i = new Intent(Intent.ACTION_VIEW);
-                i.setData(Uri.parse("https://abesit.in/"));
-                startActivity(i);
-            }
-        });
-        moodle.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent i = new Intent(Intent.ACTION_VIEW);
-                i.setData(Uri.parse("http://117.55.242.132/moodle/"));
-                startActivity(i);
-            }
-        });
-        aktu.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent i = new Intent(Intent.ACTION_VIEW);
-                i.setData(Uri.parse("https://aktu.ac.in/"));
-                startActivity(i);
-            }
-        });
-        oneview.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent i = new Intent(Intent.ACTION_VIEW);
-                i.setData(Uri.parse("https://erp.aktu.ac.in/WebPages/OneView/OneView.aspx"));
-                startActivity(i);
-            }
-        });
-        more.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-            }
-        });
-
-
-
-//create list of slides
-        List<Slide> slideList = new ArrayList<>();
-        slideList.add(new Slide(0,"http://cssslider.com/sliders/demo-20/data1/images/picjumbo.com_img_4635.jpg" , getResources().getDimensionPixelSize(R.dimen.slider_image_corner)));
-        slideList.add(new Slide(1,"http://cssslider.com/sliders/demo-12/data1/images/picjumbo.com_hnck1995.jpg" , getResources().getDimensionPixelSize(R.dimen.slider_image_corner)));
-        slideList.add(new Slide(2,"http://cssslider.com/sliders/demo-19/data1/images/picjumbo.com_hnck1588.jpg" , getResources().getDimensionPixelSize(R.dimen.slider_image_corner)));
-        slideList.add(new Slide(3,"http://wowslider.com/sliders/demo-18/data1/images/shanghai.jpg" , getResources().getDimensionPixelSize(R.dimen.slider_image_corner)));
-
-//handle slider click listener
-        slider.setItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                //do what you want
-            }
-        });
-
-//add slides to slider
-        slider.addSlides(slideList);
+        clickListenersOnNewThread();
+        loadSlider();
     }
 
     @Override
@@ -165,5 +118,98 @@ public class Dashboard extends AppCompatActivity
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
+    }
+
+    private void clickListenersOnNewThread() {
+        runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                notice.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        startActivity(new Intent(Dashboard.this,Notices.class));
+                        finish();
+                    }
+                });
+                newsandevent.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        startActivity(new Intent(Dashboard.this,NewsAndEvent.class));
+                        finish();
+                    }
+                });
+                placement.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        startActivity(new Intent(Dashboard.this,Placements.class));
+                        finish();
+                    }
+                });
+
+                abesit.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        Intent i = new Intent(Intent.ACTION_VIEW);
+                        i.setData(Uri.parse("https://abesit.in/"));
+                        startActivity(i);
+                    }
+                });
+                moodle.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        Intent i = new Intent(Intent.ACTION_VIEW);
+                        i.setData(Uri.parse("http://117.55.242.132/moodle/"));
+                        startActivity(i);
+                    }
+                });
+                aktu.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        Intent i = new Intent(Intent.ACTION_VIEW);
+                        i.setData(Uri.parse("https://aktu.ac.in/"));
+                        startActivity(i);
+                    }
+                });
+                oneview.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        Intent i = new Intent(Intent.ACTION_VIEW);
+                        i.setData(Uri.parse("https://erp.aktu.ac.in/WebPages/OneView/OneView.aspx"));
+                        startActivity(i);
+                    }
+                });
+                more.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        startActivity(new Intent(Dashboard.this, Websites.class));
+                        finish();
+                    }
+                });
+
+            }
+        });
+
+
+
+    }
+
+    private void loadSlider() {
+        //create list of slides
+        List<Slide> slideList = new ArrayList<>();
+        slideList.add(new Slide(0,"https://abesit.in/wp-content/uploads/2017/05/1-ABESIT-best-engineering-college-in-delhi-ncr.jpg" , getResources().getDimensionPixelSize(R.dimen.slider_image_corner)));
+        slideList.add(new Slide(1,"https://abesit.in/wp-content/uploads/2018/04/ABESIT-Centers-of-Excellene.jpg" , getResources().getDimensionPixelSize(R.dimen.slider_image_corner)));
+        slideList.add(new Slide(2,"https://abesit.in/wp-content/uploads/2018/03/Extraordinary-Performance-of-B.-Tech-1st-Year-Students-8.3.2018.jpg" , getResources().getDimensionPixelSize(R.dimen.slider_image_corner)));
+        slideList.add(new Slide(3,"https://abesit.in/wp-content/uploads/2018/04/abesit-achievements.jpg" , getResources().getDimensionPixelSize(R.dimen.slider_image_corner)));
+
+//handle slider click listener
+        slider.setItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                //do what you want
+            }
+        });
+
+//add slides to slider
+        slider.addSlides(slideList);
     }
 }

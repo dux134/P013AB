@@ -12,4 +12,7 @@
     <string name="aktu">Aktu</string>
     <string name="one_view">One View</string>
     <string name="more">More</string>
+    <string name="placement">Placements</string>
+    <string name="notices">Notices</string>
+    <string name="news_and_event">News and Event</string>
 </resources>

@@ -8,178 +8,271 @@
     tools:context="in.dux.p013ab.Dashboard"
     tools:showIn="@layout/app_bar_dashboard">
 
-    <android.support.v7.widget.CardView
-        android:id="@+id/cardView"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        app:cardElevation="@dimen/nav_header_vertical_spacing"
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
         <android.support.constraint.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:orientation="vertical">
 
-            <TextView
-                android:id="@+id/websites"
-                android:layout_width="wrap_content"
+
+            <android.support.v7.widget.CardView
+                android:id="@+id/cardView"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="8dp"
-                android:layout_marginStart="8dp"
-                android:text="@string/websites"
+                app:cardElevation="@dimen/nav_header_vertical_spacing"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="parent">
 
-            <ImageView
-                android:id="@+id/abesitImage"
+                <android.support.constraint.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <TextView
+                        android:id="@+id/websites"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="8dp"
+                        android:layout_marginStart="8dp"
+                        android:text="@string/websites"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <ImageView
+                        android:id="@+id/abesitImage"
+                        android:layout_width="0dp"
+                        android:layout_height="40dp"
+                        android:layout_marginEnd="8dp"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginTop="4dp"
+                        app:layout_constraintEnd_toStartOf="@+id/moodleImage"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/websites"
+                        app:srcCompat="@drawable/abesit" />
+
+                    <ImageView
+                        android:id="@+id/moodleImage"
+                        android:layout_width="0dp"
+                        android:layout_height="40dp"
+                        android:layout_marginEnd="8dp"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginTop="4dp"
+                        app:layout_constraintEnd_toStartOf="@+id/aktuImage"
+                        app:layout_constraintStart_toEndOf="@+id/abesitImage"
+                        app:layout_constraintTop_toBottomOf="@+id/websites"
+                        app:srcCompat="@drawable/moodle"
+                        tools:ignore="MissingConstraints" />
+
+                    <ImageView
+                        android:id="@+id/aktuImage"
+                        android:layout_width="0dp"
+                        android:layout_height="40dp"
+                        android:layout_marginEnd="8dp"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginTop="4dp"
+                        app:layout_constraintEnd_toStartOf="@+id/oneviewImage"
+                        app:layout_constraintStart_toEndOf="@+id/moodleImage"
+                        app:layout_constraintTop_toBottomOf="@+id/websites"
+                        app:srcCompat="@drawable/aktu" />
+
+                    <ImageView
+                        android:id="@+id/oneviewImage"
+                        android:layout_width="0dp"
+                        android:layout_height="40dp"
+                        android:layout_marginEnd="8dp"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginTop="4dp"
+                        app:layout_constraintEnd_toStartOf="@+id/moreImage"
+                        app:layout_constraintStart_toEndOf="@+id/aktuImage"
+                        app:layout_constraintTop_toBottomOf="@+id/websites"
+                        app:srcCompat="@drawable/oneview" />
+
+                    <ImageView
+                        android:id="@+id/moreImage"
+                        android:layout_width="0dp"
+                        android:layout_height="40dp"
+                        android:layout_marginEnd="8dp"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginTop="4dp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@+id/oneviewImage"
+                        app:layout_constraintTop_toBottomOf="@+id/websites"
+                        app:srcCompat="@drawable/more" />
+
+                    <TextView
+                        android:id="@+id/abesitTestView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="2dp"
+                        android:layout_marginTop="2dp"
+                        android:text="@string/abesit"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="@+id/abesitImage"
+                        app:layout_constraintStart_toStartOf="@+id/abesitImage"
+                        app:layout_constraintTop_toBottomOf="@+id/abesitImage" />
+
+                    <TextView
+                        android:id="@+id/moodleTextView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="2dp"
+                        android:layout_marginTop="2dp"
+                        android:text="@string/moodle"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="@+id/moodleImage"
+                        app:layout_constraintStart_toStartOf="@+id/moodleImage"
+                        app:layout_constraintTop_toBottomOf="@+id/moodleImage" />
+
+                    <TextView
+                        android:id="@+id/aktuTextView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="2dp"
+                        android:layout_marginTop="2dp"
+                        android:text="@string/aktu"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="@+id/aktuImage"
+                        app:layout_constraintStart_toStartOf="@+id/aktuImage"
+                        app:layout_constraintTop_toBottomOf="@+id/aktuImage" />
+
+                    <TextView
+                        android:id="@+id/oneviewTextView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="2dp"
+                        android:layout_marginTop="2dp"
+                        android:text="@string/one_view"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="@+id/oneviewImage"
+                        app:layout_constraintStart_toStartOf="@+id/oneviewImage"
+                        app:layout_constraintTop_toBottomOf="@+id/oneviewImage" />
+
+                    <TextView
+                        android:id="@+id/moreTextView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="2dp"
+                        android:layout_marginTop="2dp"
+                        android:text="@string/more"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="@+id/moreImage"
+                        app:layout_constraintStart_toStartOf="@+id/moreImage"
+                        app:layout_constraintTop_toBottomOf="@+id/moreImage" />
+                </android.support.constraint.ConstraintLayout>
+
+            </android.support.v7.widget.CardView>
+
+            <ir.apend.slider.ui.Slider
+                android:id="@+id/slider"
                 android:layout_width="0dp"
-                android:layout_height="40dp"
+                android:layout_height="200dp"
                 android:layout_marginEnd="8dp"
                 android:layout_marginStart="8dp"
-                android:layout_marginTop="4dp"
-                app:layout_constraintEnd_toStartOf="@+id/moodleImage"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/websites"
-                app:srcCompat="@drawable/abesit" />
-
-            <ImageView
-                android:id="@+id/moodleImage"
-                android:layout_width="0dp"
-                android:layout_height="40dp"
-                android:layout_marginEnd="8dp"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="4dp"
-                app:layout_constraintEnd_toStartOf="@+id/aktuImage"
-                app:layout_constraintStart_toEndOf="@+id/abesitImage"
-                app:layout_constraintTop_toBottomOf="@+id/websites"
-                app:srcCompat="@drawable/moodle"
-                tools:ignore="MissingConstraints" />
-
-            <ImageView
-                android:id="@+id/aktuImage"
-                android:layout_width="0dp"
-                android:layout_height="40dp"
-                android:layout_marginEnd="8dp"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="4dp"
-                app:layout_constraintEnd_toStartOf="@+id/oneviewImage"
-                app:layout_constraintStart_toEndOf="@+id/moodleImage"
-                app:layout_constraintTop_toBottomOf="@+id/websites"
-                app:srcCompat="@drawable/aktu" />
-
-            <ImageView
-                android:id="@+id/oneviewImage"
-                android:layout_width="0dp"
-                android:layout_height="40dp"
-                android:layout_marginEnd="8dp"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="4dp"
-                app:layout_constraintEnd_toStartOf="@+id/moreImage"
-                app:layout_constraintStart_toEndOf="@+id/aktuImage"
-                app:layout_constraintTop_toBottomOf="@+id/websites"
-                app:srcCompat="@drawable/oneview" />
-
-            <ImageView
-                android:id="@+id/moreImage"
-                android:layout_width="0dp"
-                android:layout_height="40dp"
-                android:layout_marginEnd="8dp"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="4dp"
+                android:layout_marginTop="8dp"
+                app:animateIndicators="true"
+                app:defaultIndicators="circle"
+                app:indicatorSize="8dp"
+                app:intervalSecond="5"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/oneviewImage"
-                app:layout_constraintTop_toBottomOf="@+id/websites"
-                app:srcCompat="@drawable/more" />
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/cardView"
+                app:loopSlides="true" />
 
-            <TextView
-                android:id="@+id/abesitTestView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="2dp"
-                android:layout_marginTop="2dp"
-                android:text="@string/abesit"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="@+id/abesitImage"
-                app:layout_constraintStart_toStartOf="@+id/abesitImage"
-                app:layout_constraintTop_toBottomOf="@+id/abesitImage" />
+            <android.support.v7.widget.CardView
+                android:id="@+id/cardView2"
+                android:layout_width="0dp"
+                android:layout_height="200dp"
+                android:layout_marginBottom="32dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                app:cardElevation="@dimen/round_square_indicator_radius"
+                app:layout_constraintBottom_toTopOf="@+id/cardView3"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/slider">
 
-            <TextView
-                android:id="@+id/moodleTextView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="2dp"
-                android:layout_marginTop="2dp"
-                android:text="@string/moodle"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="@+id/moodleImage"
-                app:layout_constraintStart_toStartOf="@+id/moodleImage"
-                app:layout_constraintTop_toBottomOf="@+id/moodleImage" />
+                <android.support.constraint.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
 
-            <TextView
-                android:id="@+id/aktuTextView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="2dp"
-                android:layout_marginTop="2dp"
-                android:text="@string/aktu"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="@+id/aktuImage"
-                app:layout_constraintStart_toStartOf="@+id/aktuImage"
-                app:layout_constraintTop_toBottomOf="@+id/aktuImage" />
+                    <Button
+                        android:id="@+id/newsAndEvent"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="8dp"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginTop="8dp"
+                        android:text="news and event"
+                        app:layout_constraintEnd_toStartOf="@+id/notices"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
 
-            <TextView
-                android:id="@+id/oneviewTextView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="2dp"
-                android:layout_marginTop="2dp"
-                android:text="@string/one_view"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="@+id/oneviewImage"
-                app:layout_constraintStart_toStartOf="@+id/oneviewImage"
-                app:layout_constraintTop_toBottomOf="@+id/oneviewImage" />
+                    <Button
+                        android:id="@+id/notices"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="8dp"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginTop="8dp"
+                        android:text="notices"
+                        app:layout_constraintEnd_toStartOf="@+id/placement"
+                        app:layout_constraintStart_toEndOf="@+id/newsAndEvent"
+                        app:layout_constraintTop_toTopOf="parent" />
 
-            <TextView
-                android:id="@+id/moreTextView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="2dp"
-                android:layout_marginTop="2dp"
-                android:text="@string/more"
+                    <Button
+                        android:id="@+id/placement"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="8dp"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginTop="8dp"
+                        android:text="placement"
+                        app:layout_constraintEnd_toStartOf="@+id/button6"
+                        app:layout_constraintStart_toEndOf="@+id/notices"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <Button
+                        android:id="@+id/button6"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="8dp"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginTop="8dp"
+                        android:text="Button"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@+id/placement"
+                        app:layout_constraintTop_toTopOf="parent" />
+                </android.support.constraint.ConstraintLayout>
+            </android.support.v7.widget.CardView>
+
+            <android.support.v7.widget.CardView
+                android:id="@+id/cardView3"
+                android:layout_width="0dp"
+                android:layout_height="200dp"
+                android:layout_marginBottom="8dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="32dp"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="@+id/moreImage"
-                app:layout_constraintStart_toStartOf="@+id/moreImage"
-                app:layout_constraintTop_toBottomOf="@+id/moreImage" />
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/cardView2" >
+
+                <android.support.constraint.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                </android.support.constraint.ConstraintLayout>
+            </android.support.v7.widget.CardView>
         </android.support.constraint.ConstraintLayout>
-
-    </android.support.v7.widget.CardView>
-
-    <ir.apend.slider.ui.Slider
-        android:id="@+id/slider"
-        android:layout_width="0dp"
-        android:layout_height="200dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        app:animateIndicators="true"
-        app:defaultIndicators="circle"
-        app:indicatorSize="8dp"
-        app:intervalSecond="5"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/cardView"
-        app:loopSlides="true" />
-
-    <android.support.v7.widget.CardView
-        android:layout_width="0dp"
-        android:layout_height="200dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        app:cardElevation="@dimen/nav_header_vertical_spacing"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/slider" />
+    </ScrollView>
 </android.support.constraint.ConstraintLayout>
