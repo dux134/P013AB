@@ -6,4 +6,10 @@
     <string name="navigation_drawer_close">Close navigation drawer</string>
 
     <string name="action_settings">Settings</string>
+    <string name="websites">WEBSITES</string>
+    <string name="abesit">Abesit</string>
+    <string name="moodle">Moodle</string>
+    <string name="aktu">Aktu</string>
+    <string name="one_view">One View</string>
+    <string name="more">More</string>
 </resources>

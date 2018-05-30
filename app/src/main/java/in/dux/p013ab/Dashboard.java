@@ -1,13 +1,8 @@
 package in.dux.p013ab;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
-import android.support.v7.widget.DefaultItemAnimator;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
-import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -16,21 +11,21 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.Toast;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ImageView;
 
 import java.util.ArrayList;
+import java.util.List;
 
-import in.dux.p013ab.database.FireStore;
-import in.dux.p013ab.utils.CheckNetworkConnection;
-import in.dux.p013ab.websites.WebsiteAdapter;
-import in.dux.p013ab.websites.WebsiteDataModel;
+import ir.apend.slider.model.Slide;
+import ir.apend.slider.ui.Slider;
 
 public class Dashboard extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
-    private ArrayList<WebsiteDataModel> list = new ArrayList<>();
-    RecyclerView recyclerView;
-    private RecyclerView.Adapter mAdapter;
+    private ImageView abesit,moodle,aktu,oneview,more;
+    public static Slider slider;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,8 +33,6 @@ public class Dashboard extends AppCompatActivity
         setContentView(R.layout.activity_dashboard);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
-        list = new FireStore().loadWebsiteList();
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -50,7 +43,71 @@ public class Dashboard extends AppCompatActivity
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
-        loadWebsite();
+        slider = findViewById(R.id.slider);
+        abesit = findViewById(R.id.abesitImage);
+        moodle = findViewById(R.id.moodleImage);
+        aktu = findViewById(R.id.aktuImage);
+        oneview = findViewById(R.id.oneviewImage);
+        more = findViewById(R.id.moreImage);
+
+        abesit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(Intent.ACTION_VIEW);
+                i.setData(Uri.parse("https://abesit.in/"));
+                startActivity(i);
+            }
+        });
+        moodle.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(Intent.ACTION_VIEW);
+                i.setData(Uri.parse("http://117.55.242.132/moodle/"));
+                startActivity(i);
+            }
+        });
+        aktu.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(Intent.ACTION_VIEW);
+                i.setData(Uri.parse("https://aktu.ac.in/"));
+                startActivity(i);
+            }
+        });
+        oneview.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(Intent.ACTION_VIEW);
+                i.setData(Uri.parse("https://erp.aktu.ac.in/WebPages/OneView/OneView.aspx"));
+                startActivity(i);
+            }
+        });
+        more.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+            }
+        });
+
+
+
+//create list of slides
+        List<Slide> slideList = new ArrayList<>();
+        slideList.add(new Slide(0,"http://cssslider.com/sliders/demo-20/data1/images/picjumbo.com_img_4635.jpg" , getResources().getDimensionPixelSize(R.dimen.slider_image_corner)));
+        slideList.add(new Slide(1,"http://cssslider.com/sliders/demo-12/data1/images/picjumbo.com_hnck1995.jpg" , getResources().getDimensionPixelSize(R.dimen.slider_image_corner)));
+        slideList.add(new Slide(2,"http://cssslider.com/sliders/demo-19/data1/images/picjumbo.com_hnck1588.jpg" , getResources().getDimensionPixelSize(R.dimen.slider_image_corner)));
+        slideList.add(new Slide(3,"http://wowslider.com/sliders/demo-18/data1/images/shanghai.jpg" , getResources().getDimensionPixelSize(R.dimen.slider_image_corner)));
+
+//handle slider click listener
+        slider.setItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                //do what you want
+            }
+        });
+
+//add slides to slider
+        slider.addSlides(slideList);
     }
 
     @Override
@@ -108,32 +165,5 @@ public class Dashboard extends AppCompatActivity
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
-    }
-
-    private void loadWebsite() {
-        recyclerView = (RecyclerView) findViewById(R.id.website_recylerview);
-        recyclerView.setLayoutManager(new LinearLayoutManager(Dashboard.this,LinearLayoutManager.HORIZONTAL, false));
-        mAdapter = new WebsiteAdapter(list, new WebsiteAdapter.RecyclerViewClickListener() {
-            @Override
-            public void onClick(View view, int position) {
-
-                if(CheckNetworkConnection.isConnectionAvailable(getApplicationContext())) {
-
-//                    showMyAdd();
-//                    subject = listitems.get(position).getTitle().toLowerCase();
-//                    startActivity(new Intent(getActivity(), LoadingScreen.class));
-
-                } else {
-                    Toast.makeText(getApplicationContext(),"Unable to connect to internet, please check your network connection",Toast.LENGTH_SHORT).show();
-
-                }
-
-            }
-        });
-        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getApplicationContext());
-
-        recyclerView.setLayoutManager(layoutManager);
-        recyclerView.setAdapter(mAdapter);
-        recyclerView.setItemAnimator(new DefaultItemAnimator());
     }
 }

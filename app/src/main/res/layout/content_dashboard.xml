@@ -8,12 +8,178 @@
     tools:context="in.dux.p013ab.Dashboard"
     tools:showIn="@layout/app_bar_dashboard">
 
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/website_recylerview"
+    <android.support.v7.widget.CardView
+        android:id="@+id/cardView"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:scrollbars="none"
+        app:cardElevation="@dimen/nav_header_vertical_spacing"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent">
+
+        <android.support.constraint.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/websites"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:layout_marginStart="8dp"
+                android:text="@string/websites"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:id="@+id/abesitImage"
+                android:layout_width="0dp"
+                android:layout_height="40dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="4dp"
+                app:layout_constraintEnd_toStartOf="@+id/moodleImage"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/websites"
+                app:srcCompat="@drawable/abesit" />
+
+            <ImageView
+                android:id="@+id/moodleImage"
+                android:layout_width="0dp"
+                android:layout_height="40dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="4dp"
+                app:layout_constraintEnd_toStartOf="@+id/aktuImage"
+                app:layout_constraintStart_toEndOf="@+id/abesitImage"
+                app:layout_constraintTop_toBottomOf="@+id/websites"
+                app:srcCompat="@drawable/moodle"
+                tools:ignore="MissingConstraints" />
+
+            <ImageView
+                android:id="@+id/aktuImage"
+                android:layout_width="0dp"
+                android:layout_height="40dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="4dp"
+                app:layout_constraintEnd_toStartOf="@+id/oneviewImage"
+                app:layout_constraintStart_toEndOf="@+id/moodleImage"
+                app:layout_constraintTop_toBottomOf="@+id/websites"
+                app:srcCompat="@drawable/aktu" />
+
+            <ImageView
+                android:id="@+id/oneviewImage"
+                android:layout_width="0dp"
+                android:layout_height="40dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="4dp"
+                app:layout_constraintEnd_toStartOf="@+id/moreImage"
+                app:layout_constraintStart_toEndOf="@+id/aktuImage"
+                app:layout_constraintTop_toBottomOf="@+id/websites"
+                app:srcCompat="@drawable/oneview" />
+
+            <ImageView
+                android:id="@+id/moreImage"
+                android:layout_width="0dp"
+                android:layout_height="40dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="4dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/oneviewImage"
+                app:layout_constraintTop_toBottomOf="@+id/websites"
+                app:srcCompat="@drawable/more" />
+
+            <TextView
+                android:id="@+id/abesitTestView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="2dp"
+                android:layout_marginTop="2dp"
+                android:text="@string/abesit"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="@+id/abesitImage"
+                app:layout_constraintStart_toStartOf="@+id/abesitImage"
+                app:layout_constraintTop_toBottomOf="@+id/abesitImage" />
+
+            <TextView
+                android:id="@+id/moodleTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="2dp"
+                android:layout_marginTop="2dp"
+                android:text="@string/moodle"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="@+id/moodleImage"
+                app:layout_constraintStart_toStartOf="@+id/moodleImage"
+                app:layout_constraintTop_toBottomOf="@+id/moodleImage" />
+
+            <TextView
+                android:id="@+id/aktuTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="2dp"
+                android:layout_marginTop="2dp"
+                android:text="@string/aktu"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="@+id/aktuImage"
+                app:layout_constraintStart_toStartOf="@+id/aktuImage"
+                app:layout_constraintTop_toBottomOf="@+id/aktuImage" />
+
+            <TextView
+                android:id="@+id/oneviewTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="2dp"
+                android:layout_marginTop="2dp"
+                android:text="@string/one_view"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="@+id/oneviewImage"
+                app:layout_constraintStart_toStartOf="@+id/oneviewImage"
+                app:layout_constraintTop_toBottomOf="@+id/oneviewImage" />
+
+            <TextView
+                android:id="@+id/moreTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="2dp"
+                android:layout_marginTop="2dp"
+                android:text="@string/more"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="@+id/moreImage"
+                app:layout_constraintStart_toStartOf="@+id/moreImage"
+                app:layout_constraintTop_toBottomOf="@+id/moreImage" />
+        </android.support.constraint.ConstraintLayout>
+
+    </android.support.v7.widget.CardView>
+
+    <ir.apend.slider.ui.Slider
+        android:id="@+id/slider"
+        android:layout_width="0dp"
+        android:layout_height="200dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        app:animateIndicators="true"
+        app:defaultIndicators="circle"
+        app:indicatorSize="8dp"
+        app:intervalSecond="5"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cardView"
+        app:loopSlides="true" />
+
+    <android.support.v7.widget.CardView
+        android:layout_width="0dp"
+        android:layout_height="200dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        app:cardElevation="@dimen/nav_header_vertical_spacing"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/slider" />
 </android.support.constraint.ConstraintLayout>
